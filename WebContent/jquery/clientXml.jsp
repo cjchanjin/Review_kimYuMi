@@ -33,10 +33,11 @@ function loadCD() {
 			var price = list[i].getElementsByTagName("PRICE")[0].firstChild.nodeValue;
 			style = price > 10? "blueText" : "redText";
 			
-			str += "<tr><td>" + title + 
-					  "</td><td>" + artist +
-					  "</td><td class=' "+style+" '>" + price +
-					  "</td></tr>";
+			str += "<tr>"+
+					  "<td>" + title +"</td>" +
+					  "<td>" + artist + "</td>"+
+					  "<td class=' "+style+" '>" + price + "</td>"+
+					  "</tr>";
 			$("#result").html(str);		// innerHTML 과 같은 기능
 		}
 	}, "xml");
