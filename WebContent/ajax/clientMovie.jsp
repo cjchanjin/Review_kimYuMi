@@ -10,26 +10,46 @@
 $(function() {
 	$("#searchXML").bind("click", rankMovieXML);
 })
-/* $(function() {
+
+$(function() {
 	$("#searchJSON").bind("click", rankMovieJSON);
-}) */
+})
 
 function rankMovieXML() {
-	$.get("../server/cd2.xml", function(datas) {
+	$.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=430156241533f1d058c603178cc3ca0e&targetDt=20200406", function(datas) {
 		var list = datas.getElementsByTagName("dailyBoxOffice");
 		var str="";
 		
 		for(i=0; i<list.length; i++) {
-			var rank = list[i].getElementesByTagName("rank")[0].firstChild.nodeValue;
-			var movieNm = list[i].getElementesByTagName("movieNm")[0].firstChild.nodeValue;
+			var rank = list[i].getElementsByTagName("rank")[0].firstChild.nodeValue;
+			var movieNm = list[i].getElementsByTagName("movieNm")[0].firstChild.nodeValue;
 			
 			str += "<tr>"+
 							"<td>" + rank +"</td>" +
 							"<td>" + movieNm + "</td>"+
-					  "</tr>";
+				"</tr>";
 		$("#tableXML").html(str);					  
 		}
 	}, "xml");
+}
+
+function rankMovieJSON () {
+	$.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20200406", function(datas) {
+		var arry = datas.getElementById("boxOfficeResult");
+		consosle.log(list);
+		var obj = JSON.parse(this.responseText);
+		consosle.log(obj);
+		var str="";
+		
+		for(i=0; i<obj.dailyBoxOfficeList.length; i++) {
+		document.getElementById("rank").innerHTML = obj.dailyBoxOfficeList[i].rank;
+		document.getElementById("movieNm").innerHTML = obj.dailyBoxOfficeList[i].movieNm;
+		
+		str += "<div>" + rank +"</div>" +
+			   "<div>" + movieNm + "<div>"+"<br>";
+ 			 $("#divJSON").html(str);
+		}
+	}, "json");
 }
 
 </script>
@@ -37,12 +57,12 @@ function rankMovieXML() {
 <body>
 날짜<input id="searchDay">
 <h3>XML 영화순위</h3>
-<button type="button" id="searchXML" onclick="getMovieXML()">xml 조회</button>
+<button type="button" id="searchXML">XML 조회</button>
 <table id="tableXML"></table>
 
 <h3>JSON 영화순위</h3>
-<button type="button" id="searchJSON" onclick="getMovieJSON()">JSON 조회</button>
-<div id=""></div>
+<button type="button" id="searchJSON">JSON 조회</button>
+<div id="divJSON"></div>
 
 </body>
 </html>
