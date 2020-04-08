@@ -35,22 +35,25 @@ function rankMovieXML() {
 
 function rankMovieJSON () {
 	$.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20200406", function(datas) {
-		var arry = datas.getElementById("boxOfficeResult");
-		consosle.log(list);
-		var obj = JSON.parse(this.responseText);
-		consosle.log(obj);
+//		var arry = datas.getElementById("boxOfficeResult");
+		console.log(datas);
+		var obj = datas.boxOfficeResult;
+		console.log(obj);
 		var str="";
 		
 		for(i=0; i<obj.dailyBoxOfficeList.length; i++) {
-		document.getElementById("rank").innerHTML = obj.dailyBoxOfficeList[i].rank;
-		document.getElementById("movieNm").innerHTML = obj.dailyBoxOfficeList[i].movieNm;
+		var rank = obj.dailyBoxOfficeList[i].rank;
+		console.log(rank);
+		var movieNm = obj.dailyBoxOfficeList[i].movieNm;
+		console.log(movieNm);
 		
-		str += "<div>" + rank +"</div>" +
-			   "<div>" + movieNm + "<div>"+"<br>";
- 			 $("#divJSON").html(str);
+		str += "<div>" + rank +" : " + movieNm +"</div>" + "<br>";
+		$("#divJSON").html(str);
 		}
 	}, "json");
 }
+
+$("searchDay").datepicker(){};
 
 </script>
 </head>

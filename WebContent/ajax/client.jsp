@@ -15,7 +15,7 @@ function dupCheck() {
 		console.log(this.readyState);
 	    if (this.readyState == 4) {		//요청 완료
 	    	if(this.status == 200) {		//실행 OK
-	     console.log("asax 요청 완료");		//메시지 찍히는 순서 확인 2
+	     console.log("ajax 요청 완료");		//메시지 찍히는 순서 확인 2
 	     document.getElementById("result").innerHTML = this.responseText; // id 가 result 인 태그를 받아서 this. 이후로 변경한다.
 	    	} else {
 	    		document.getElementById("result").innerHTML = this.statusText;	//200이 아니라면 에러 메시지 출력

@@ -7,7 +7,7 @@
 //	Thread.sleep(3000); //3초 대기
 	if(id != null) {
 		if (id.equals("admin")){
-			out.print("사용불가");
+			out.print("중복된 이메일 입니다.");
 		} else {
 			out.print("사용가능");
 		}
