@@ -15,8 +15,8 @@
 		//사번으로 사원정보 검색
 		$.ajax({ url : "../server/findName.jsp",
 				  data: { id : $("#empNo").val() },
-				  dataType : "JSON",
-				  async : true, 				//비동기 -> 트루가 디폴트
+//				  dataType : "JSON",
+//				  async : true, 				//비동기 -> 트루가 디폴트
 //				  method: get 			//get or post
 					})
 		.done(function(datas){

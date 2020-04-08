@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
 
 <% 
-	//EmpDAO dao = EmpDAO.getInstance();		->싱글톤 사용시 new~ 할필요 없다
+	//EmpDAO dao = EmpDAO.getInstance();		//->싱글톤 사용시 new~ 할필요 없다
 	int id = Integer.parseInt(request.getParameter("id"));
 	EmpDTO dto = EmpDAO.getInstance().getEmp(id);
 	//List ==> "[   ]"
