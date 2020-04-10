@@ -255,4 +255,32 @@ public class EmpDAO {
 		}
 		return datas;
 	}
+	
+	public List<Map<String, Object>> getRegion () {
+		List<Map<String, Object>> list = new ArrayList();
+		
+		try {
+			conn = ConnectionManager.getConnection();
+			String sql = "select country_name, region_name, city\r\n" + 
+							"from locations l, countries c, regions r\r\n" + 
+							"where l.country_id=c.country_id and c.region_id=r.region_id\r\n" + 
+							"order by region_name";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object> ();
+				map.put("city", rs.getString("city"));
+				map.put("country_name", rs.getString("country_name"));
+				map.put("region_name", rs.getString("region_name"));
+				list.add(map);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(conn);
+		}
+		
+		return list;
+		
+	}
 }
