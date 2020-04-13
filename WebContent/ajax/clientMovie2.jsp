@@ -35,23 +35,21 @@ function rankMovieXML() {
 }
 
 function rankMovieJSON () {
-	$.get("../geoDaegu1.txt", function(datas) {
+	$.get("../daeguLatLng.json", function(datas) {
 //		var arry = datas.getElementById("boxOfficeResult");
 		console.log(datas);
 		var obj = datas.features;
 		console.log(obj);
-		var obj2 = obj.geometry;
-		console.log(obj2);
 		var str="";
 		
-		for(i=0; i<obj.geometry.length; i++) {
-		var rank = obj.geometry[i].coordinates;
-		console.log(coordinates);
-		var movieNm = obj.dailyBoxOfficeList[i].movieNm;
-		console.log(movieNm);
+		for(i=0; i<obj.length; i++) {
+			var rank = obj[i].geometry.coordinates[0];
+			console.log(rank);
+//		var movieNm = obj.geometry[i].coordinates[i].x;
+//		console.log(movieNm);
 		
-		str += "<div>" + rank +" : " + movieNm +"</div>" + "<br>";
-		$("#divJSON").html(str);
+//		str += "<div>" + rank +" : " + movieNm +"</div>" + "<br>";
+//		$("#divJSON").html(str);
 		}
 	}, "json");
 }
