@@ -36,7 +36,9 @@ $(function() {
 
 function rankMovieJSON () {
 	$.get("../DaeguXY.json", function(datas) {
+
 //		var arry = datas.getElementById("boxOfficeResult");
+		console.log(datas);
 		var obj = datas.features;
 		var str="";
 		
