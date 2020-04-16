@@ -1,7 +1,7 @@
 function calc() {
 	//var n1 = document.getElementByID("num1").value ;
 	var n1 = document.getElementsByName("num1")[0].value ;
-	var n2 = document.getElementById("num2").value ;
+	var n2 = document.getElementById("num2").va	lue ;
 	
 	//함수호출
 //	var result = parseInt(n1) + parseInt(n2);
