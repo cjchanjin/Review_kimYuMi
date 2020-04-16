@@ -58,7 +58,7 @@ public class boardInsert extends HttpServlet {
 				part.write(uploadFileName);
 			}
 		}
-		response.getWriter().append(uploadFile + "<br>" + title + "<br>" + contents);
+		response.getWriter().append(uploadFile + "<br>title: " + title + "<br>content: " + contents);
 	}
 
 	private String extractFileName(Part part) {

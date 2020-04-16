@@ -7,15 +7,15 @@
 <title>clientMovie.jsp</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	$("#searchXML").bind("click", rankMovieXML);
-})
+/*$(function() {
+	$("#searchXML").bind("click", rankMovieXML); */
+
 
 $(function() {
 	$("#searchJSON").bind("click", rankMovieJSON);
 })
 
-function rankMovieXML() {
+/* function rankMovieXML() {
 	$.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=430156241533f1d058c603178cc3ca0e&targetDt=20200406", function(datas) {
 		var list = datas.getElementsByTagName("dailyBoxOffice");
 		var str="";
@@ -32,29 +32,26 @@ function rankMovieXML() {
 		$("#tableXML").html(str);					  
 		}
 	}, "xml");
-}
+} */
 
 function rankMovieJSON () {
-	$.get("../geoDaegu1.txt", function(datas) {
+	$.get("../DaeguXY.json", function(datas) {
 //		var arry = datas.getElementById("boxOfficeResult");
-		console.log(datas);
 		var obj = datas.features;
-		console.log(obj);
-		var obj2 = obj.geometry;
-		console.log(obj2);
 		var str="";
 		
-		for(i=0; i<obj.geometry.length; i++) {
-		var rank = obj.geometry[i].coordinates;
-		console.log(coordinates);
-		var movieNm = obj.dailyBoxOfficeList[i].movieNm;
-		console.log(movieNm);
 		
-		str += "<div>" + rank +" : " + movieNm +"</div>" + "<br>";
-		$("#divJSON").html(str);
-		}
-	}, "json");
-}
+		 for(i in obj){
+			var coordinates = obj[i].geometry.coordinates;
+			console.log(coordinates);
+			for(k in coordinates){
+				
+				
+			
+				} 
+			 }
+		}, "json");
+	}
 
 
 </script>
